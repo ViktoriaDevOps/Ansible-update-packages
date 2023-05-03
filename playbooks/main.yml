@@ -1,0 +1,7 @@
+---
+- name: update os packages
+  hosts: servers
+  become: true
+  roles:
+    - update-packages
+...

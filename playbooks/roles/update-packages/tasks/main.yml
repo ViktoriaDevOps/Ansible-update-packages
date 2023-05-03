@@ -1,0 +1,7 @@
+---
+- name: package update yum module
+  yum:
+   name: "*"
+   state: "latest"
+   exclude: "vim"
+...
