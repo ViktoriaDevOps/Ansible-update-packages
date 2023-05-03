@@ -4,4 +4,5 @@
    name: "*"
    state: "latest"
    exclude: "vim"
+  notify: "restart host"
 ...
