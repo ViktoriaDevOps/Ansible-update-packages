@@ -1,0 +1,12 @@
+---
+- name: "Get all facts secondly"
+  setup:
+    gather_subset: all
+
+- name: Remove old kernels
+  yum:
+    name: "{{ item }}"
+    state: absent
+  with_items: "{{ ansible_facts['kernel'][:-2] }}"
+  when: ansible_facts['kernel'] | length > 2
+...

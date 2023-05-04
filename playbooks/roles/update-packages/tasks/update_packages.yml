@@ -1,0 +1,27 @@
+---
+- name: "Get all facts"
+  setup:
+    gather_subset: all
+
+- name: "Check if i'am a root"
+  fail:
+    msg: "The role shoud be ran as root not {{ ansible_user_id }} user"
+  when: ansible_user_id != "root"
+
+- name: "Update packages that require a reboot"
+  yum:
+    name: "*"
+    state: latest
+    update_cache: yes
+  notify: "restart host"
+
+- name: "Update all other packages except the excluded ones"
+  yum:
+    name: "*"
+    exclude: "{{ excluded_packages }}"
+    state: latest
+    update_cache: yes
+
+- name: "Flush handlers"
+  meta: flush_handlers
+...

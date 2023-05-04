@@ -1,0 +1,13 @@
+---
+ansible_user: centos
+
+ansible_ssh_pass: not_real_password
+
+ansible_become_pass: '{{ ansible_ssh_pass }}'
+
+reboot_timeout_seconds: 300
+
+excluded_packages:
+  - vim
+
+---

@@ -1,8 +1,7 @@
 ---
-- name: package update yum module
-  yum:
-   name: "*"
-   state: "latest"
-   exclude: "vim"
-  notify: "restart host"
+
+- include_tasks: "update_packages.yml"
+
+- include_tasks: "post_reboot.yml"
+
 ...

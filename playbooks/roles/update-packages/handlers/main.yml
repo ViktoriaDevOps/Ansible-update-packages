@@ -1,8 +1,6 @@
 ---
-
 - name: "Restart host"
   listen: "restart host"
   reboot:
     reboot_timeout: "{{ reboot_timeout_seconds }}"
-
 ...
